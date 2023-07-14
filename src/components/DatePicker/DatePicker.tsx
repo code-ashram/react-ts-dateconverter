@@ -12,6 +12,8 @@ const DatePicker: FC<Props> = ({date, onClickDate, onSelectDate}) => {
         onClickDate(new Date(e.target.value))
     }
 
+    // onChangeYear(e.target.value === 'All' ? undefined : Number(e.target.value))
+
     return (
         <div className="date-picker mb-2">
             <label className="date-picker__label mr-3" htmlFor="picker">Select date here:</label>

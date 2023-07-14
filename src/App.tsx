@@ -8,19 +8,21 @@ import {today} from "./components/utils.ts";
 import './App.css'
 
 function App() {
-    const [calendarDate, setCalendarDate] = useState(today)
-    const [chosenDate, setChosenDate] =useState(today)
+    const [calendarDate, setCalendarDate] = useState<string>(today)
+    const [chosenDate, setChosenDate] =useState<string>(today)
     const [regionName, setRegionName] = useState('en-US')
 
     const handleConvertDate = (date: Date) => setChosenDate(new Intl.DateTimeFormat(regionName).format(date))
 
     const handleChangeRegion = (value: string) => {
         setRegionName(value)
-        console.log(value)
-        handleConvertDate(new Date(calendarDate))
+        setChosenDate(new Intl.DateTimeFormat(value).format(new Date(calendarDate)))
     }
 
-    const handleResetDate = () => setCalendarDate(today)
+    const handleResetDate = () => {
+        setCalendarDate(today)
+        setChosenDate("Select date")
+    }
 
     return (
         <div>
