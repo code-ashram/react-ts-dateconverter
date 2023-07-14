@@ -1,16 +1,27 @@
 import "./DateOutput.css"
+import {ChangeEvent, FC} from "react";
 
-const DateOutput = () => {
+type Props = {
+    region: string
+    onChangeRegion: (value: string) => void
+    convertedDate: string
+}
+
+const DateOutput: FC<Props> = ({region, onChangeRegion, convertedDate}) => {
+    const handleChangeValue = (e: ChangeEvent<HTMLSelectElement>) => {
+        onChangeRegion(e.target.value)
+    }
 
     return (
         <div className="date-output">
-            <label className="date-output__label mr-3" htmlFor="locale">Chose your format:</label>
-            <select className="date-output__select mb-2 pl-2 rounded-md text-black" name="locale" id="locale">
-                <option value="US">US</option>
-                <option value="UK">UK</option>
-                <option value="RU">RU</option>
+            <label className="date-output__label mr-3" htmlFor="locale">Choose your format:</label>
+            <select className="date-output__select mb-2 rounded-md text-black" name="locale" id="locale" value={region}
+                    onChange={handleChangeValue}>
+                <option value="en-US">US</option>
+                <option value="en-GB">UK</option>
+                <option value="ru-RU">RU</option>
             </select>
-            <output className="date-output__result rounded-md" htmlFor="picker">2011-05-24</output>
+            <output className="date-output__result rounded-md" htmlFor="picker">{convertedDate}</output>
         </div>
     )
 }

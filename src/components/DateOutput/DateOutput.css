@@ -1,7 +1,12 @@
 .date-output__result {
-    display: block;
+    display: inline-block;
     width: 200px;
     margin: 0 auto;
     color: black;
     background-color: white;
+}
+
+.date-output__select {
+    margin-right: 2px;
+    padding: 2px 0 2px 6px;
 }
