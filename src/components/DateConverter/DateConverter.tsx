@@ -1,4 +1,4 @@
-import "./DateOutput.css"
+import "./DateConverter.css"
 import {ChangeEvent, FC} from "react";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
     convertedDate: string
 }
 
-const DateOutput: FC<Props> = ({region, onChangeRegion, convertedDate}) => {
+const DateConverter: FC<Props> = ({region, onChangeRegion, convertedDate}) => {
     const handleChangeValue = (e: ChangeEvent<HTMLSelectElement>) => {
         onChangeRegion(e.target.value)
     }
@@ -26,4 +26,4 @@ const DateOutput: FC<Props> = ({region, onChangeRegion, convertedDate}) => {
     )
 }
 
-export default DateOutput
+export default DateConverter
