@@ -19,6 +19,11 @@ const DateConverter: FC<Props> = ({convertedDate}) => {
         setLocale(e.target.value as LOCALE)
     }
 
+    const convertDate = (date: string) => date
+        ? new Intl.DateTimeFormat(locale).format(new Date(date))
+        // : new Date().toISOString().slice(0, 10)
+        : "Select date"
+
     return (
         <div className="date-output">
             <label className="date-output__label mr-3" htmlFor="locale">Chose your format:</label>
@@ -28,7 +33,7 @@ const DateConverter: FC<Props> = ({convertedDate}) => {
                 <option value={LOCALE.GB}>UK</option>
                 <option value={LOCALE.RU}>RU</option>
             </select>
-            <output className="date-output__result rounded-md" htmlFor="picker">{convertedDate}</output>
+            <output className="date-output__result rounded-md" htmlFor="picker">{convertDate(convertedDate)}</output>
         </div>
     )
 }
